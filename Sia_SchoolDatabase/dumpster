@@ -1,0 +1,221 @@
+<ul class="nav navbar-nav">
+            <li <?php if($currentPage == 'student') echo 'class = active';?>> <a href= <?php echo !isset($arr['student']) ? 'student.php' : '#'; ?>>Student</a></li>
+            <li <?php if($currentPage == 'grade') echo 'class = active';?>> <a href= <?php echo !isset($arr['grade']) ? 'grade.php' : '#'; ?>>Grade</a></li>
+            <li <?php if($currentPage == 'curriculum') echo 'class = active';?>> <a href= <?php echo !isset($arr['curriculum']) ? 'curriculum.php' : '#'; ?>>Curriculum</a></li>
+            <li <?php if($currentPage == 'program') echo 'class = active';?>> <a href= <?php echo !isset($arr['program']) ? 'program.php' : '#'; ?>>Program</a></li>
+            <li <?php if($currentPage == 'subject') echo 'class = active';?>> <a href= <?php echo !isset($arr['subject']) ? 'subject.php' : '#'; ?>>Subject</a></li>
+            <li <?php if($currentPage == 'nationality') echo 'class = active';?>> <a href= <?php echo !isset($arr['nationality']) ? 'nationality.php' : '#'; ?>>Nationality</a></li>
+            <li <?php if($currentPage == 'religon') echo 'class = active';?>> <a href= <?php echo !isset($arr['religion']) ? 'religion.php' : '#'; ?>>Religion</a></li>
+        </ul>
+
+SELECT DISTINCT schoolyear, semester, subject_id FROM school.grade JOIN subject ON subject_id = subject.id WHERE schoolyear = 2003 AND semester = 1
+
+SELECT code, title, subject.id AS 'subject.id' FROM subject JOIN grade ON grade.subject_id = subject.id WHERE schoolyear = 2003 AND semester = 1
+
+
+<div class="modal fade addEntryModal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Entry Form</h4>
+                </div>
+                <div class="modal-body">
+                    <!--  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!START OF THE FORM!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+                    <div class="container col-md-offset-2 col-md-8" id="form">
+
+                        <!-- form id is unique!!!!! -->
+                        <form class="form-group" method="get" action="entryHandler.php" >
+                            <table class="table" id="recordForm">
+                                <tr id="frm-user">
+                                    <td>Username</td>
+                                    <td>
+                                        <input type="textbox" class="form-control" id="txt-user" name = "txt-user">
+                                    </td>
+                                </tr>
+                                <tr id="frm-password">
+                                    <td>Password</td>
+                                    <td>
+                                        <input type="textbox" class="form-control" id="txt-password" name = "txt-password">
+                                    </td>
+                                </tr>
+                                <tr id="frm-description">
+                                    <td>Description</td>
+                                    <td>
+                                        <input type="textbox" class="form-control" id="txt-description" name = "txt-description">
+                                    </td>
+                                </tr>
+                                <tr id="frm-active">
+                                    <td>Active</td>
+                                    <td>
+                                        <input type="hidden" name ="checkbox-active" value = '0'>
+                                        <input type="checkbox" id="checkbox-active" name ="checkbox-active" value = '1'>
+                                    </td>
+                                </tr>
+                                <tr><td><strong>PERMISSIONS</strong></td><tr>
+                                <tr>
+                                    <td>Student</td>
+                                    <td>
+                                        <input type="hidden" name = "checkbox-student[0]" value = '0'>
+                                        <input type="checkbox" id="checkbox-student-view" name = "checkbox-student[0]" value = '1'> View  
+
+                                        <input type="hidden" name = "checkbox-student[1]" value = '0'>
+                                        <input type="checkbox" id="checkbox-student-add" name = "checkbox-student[1]" value = '1'> Add 
+
+                                        <input type="hidden" name = "checkbox-student[2]" value = '0'>
+                                        <input type="checkbox" id="checkbox-student-edit" name = "checkbox-student[2]" value = '1'> Edit
+                                        <br>
+
+                                        <input type="hidden" name = "checkbox-student[3]" value = '0'>
+                                        <input type="checkbox" id="checkbox-student-viewGrades" name = "checkbox-student[3]" value = '1'> View Grades  
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Program</td>
+                                    <td>
+                                        <input type="hidden" name = "checkbox-program[0]" value = '0'>
+                                        <input type="checkbox" id="checkbox-program-view" name = "checkbox-program[0]" value = '1'> View  
+
+                                        <input type="hidden" name = "checkbox-program[1]" value = '0'>
+                                        <input type="checkbox" id="checkbox-program-add" name = "checkbox-program[1]" value = '1'> Add 
+
+                                        <input type="hidden" name = "checkbox-program[2]" value = '0'>
+                                        <input type="checkbox" id="checkbox-program-edit" name = "checkbox-program[2]" value = '1'> Edit
+                                        <br>
+
+                                        <input type="hidden" name = "checkbox-programCurriculum[0]" value = '0'>
+                                        <input type="checkbox" id="checkbox-program-viewCurriculum" name = "checkbox-programCurriculum[0]" value = '1'> View Curriculum 
+                                        <br>
+
+                                        <input type="hidden" name = "checkbox-programCurriculum[1]" value = '0'>
+                                        <input type="checkbox" id="checkbox-program-addCurriculum" name = "checkbox-programCurriculum[1]" value = '1'> Add Curriculum  
+                                        <br>
+
+                                        <input type="hidden" name = "checkbox-programCurriculum[2]" value = '0'>
+                                        <input type="checkbox" id="checkbox-program-editCurriculum" name = "checkbox-programCurriculum[2]" value = '1'> Edit Curriculum   
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Subject</td>
+                                    <td>
+                                        <input type="hidden" name = "checkbox-subject[0]" value = '0'>
+                                        <input type="checkbox" id="checkbox-subject-view" name = "checkbox-subject[0]" value = '1'> View  
+
+                                        <input type="hidden" name = "checkbox-subject[1]" value = '0'>
+                                        <input type="checkbox" id="checkbox-subject-add" name = "checkbox-subject[1]" value = '1'> Add 
+
+                                        <input type="hidden" name = "checkbox-subject[2]" value = '0'>
+                                        <input type="checkbox" id="checkbox-subject-edit" name = "checkbox-subject[2]" value = '1'> Edit 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Nationality</td>
+                                    <td>
+                                        <input type="hidden" name = "checkbox-nationality[0]" value = '0'>
+                                        <input type="checkbox" id="checkbox-nationality-view" name = "checkbox-nationality[0]" value = '1'> View  
+
+                                        <input type="hidden" name = "checkbox-nationality[1]" value = '0'>
+                                        <input type="checkbox" id="checkbox-nationality-add" name = "checkbox-nationality[1]" value = '1'> Add 
+
+                                        <input type="hidden" name = "checkbox-nationality[2]" value = '0'>
+                                        <input type="checkbox" id="checkbox-nationality-edit" name = "checkbox-nationality[2]" value = '1'> Edit 
+                                </tr>
+                                <tr>
+                                    <td>Religion</td>
+                                    <td>
+                                        <input type="hidden" name = "checkbox-religion[0]" value = '0'>
+                                        <input type="checkbox" id="checkbox-religion-view" name = "checkbox-religion[0]" value = '1'> View  
+
+                                        <input type="hidden" name = "checkbox-religion[1]" value = '0'>
+                                        <input type="checkbox" id="checkbox-religion-add" name = "checkbox-religion[1]" value = '1'> Add 
+
+                                        <input type="hidden" name = "checkbox-religion[2]" value = '0'>
+                                        <input type="checkbox" id="checkbox-religion-edit" name = "checkbox-religion[2]" value = '1'> Edit
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Account</td>
+                                    <td>
+                                        <input type="hidden" name = "checkbox-account[0]" value = '0'>
+                                        <input type="checkbox" id="checkbox-account-view" name = "checkbox-account[0]" value = '1'> View
+
+                                        <input type="hidden" name = "checkbox-account[1]" value = '0'>  
+                                        <input type="checkbox" id="checkbox-account-add" name = "checkbox-account[1]" value = '1'> Add 
+
+                                        <input type="hidden" name = "checkbox-account[2]" value = '0'>
+                                        <input type="checkbox" id="checkbox-account-edit" name = "checkbox-account[2]" value = '1'> Edit
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Grade</td>
+                                    <td>
+                                        <input type="hidden" name = "checkbox-grade[0]" value = '0'>
+                                        <input type="checkbox" id="checkbox-grade-view" name = "checkbox-grade[0]" value = '1'> View  
+
+                                        <input type="hidden" name = "checkbox-grade[1]" value = '0'>
+                                        <input type="checkbox" id="checkbox-grade-add" name = "checkbox-grade[1]" value = '1'> Add 
+
+                                        <input type="hidden" name = "checkbox-grade[2]" value = '0'>
+                                        <input type="checkbox" id="checkbox-grade-edit" name = "checkbox-grade[2]" value = '1'> Edit
+                                    </td>
+                                </tr>
+                            </table>
+                            <!-- <button class="btn btn-primary" id = "btn-save">Save</button> -->
+                            <div class="modal-footer">
+                                <div class="pull-right row">
+                                    <input type="hidden" id = "modalType" name="modalType">
+                                    <input type="hidden" id = "modalSQLID" name = "modalSQLID">
+                                    <input type="hidden" id = "dataSource" name = "dataSource"  value = <?php echo basename(__FILE__);?>>
+                                    <input type="submit" id="hrefSave" name="entrySubmission" class="form-control pull-right" value="Add">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!--  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!END OF THE FORM!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+<div class="modal fade addEntryModal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Entry Form</h4>
+                </div>
+                <div class="modal-body">
+                    <!--  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!START OF THE FORM!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+                    <div class="container col-md-offset-2 col-md-8" id="form">
+                        <!-- form id is unique!!!!! -->
+                        <form class="form-group" action = "entryHandler.php" method = "get">
+                            <table class="table" id="recordForm">
+                                <tr id="frm-name">
+                                    <td>Name</td>
+                                    <td>
+                                        <input type="text" class="form-control" id="txt-name" name = "txt-name" required="true">
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <div class="modal-footer">
+                                <div class="pull-right row">
+                                    <input type="hidden" id = "dataSource" name = "dataSource"  value = <?php echo basename(__FILE__);?>>
+                                    <input type="hidden" id = "modalType" name="modalType">
+                                    <input type="hidden" id = "modalSQLID" name = "modalSQLID">
+                                    <input type="submit" id="hrefSave" name="entrySubmission" class="form-control pull-right" value="Add">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!--  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!END OF THE FORM!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,55 @@
+.full-height {
+    height: 100vh;
+}
+
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.top-right {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+
+.content {
+    text-align: center;
+}
+
+.title {
+    font-size: 50px;
+}
+
+.links > a,span {
+    font-family: sans-serif;
+    color: #333;
+    padding: 20px 25px;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.m-b-md {
+    margin-bottom: 30px;
+}
+
+.links a:hover {
+    color: #306bc3;
+    font-weight: 30%;
+}
+
+body{
+    /* background-image: url(); */
+    background-color: #eee
+}
+
+.school-logo{
+    width: 200px;
+    height: 200px;
+    margin-bottom: 50px;
+}
